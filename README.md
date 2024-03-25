@@ -1,42 +1,64 @@
 Projeto que representa a prova prática do professor Bussola
 
 check-list: 
-[] - Entender a atividade, isso envolve ler a atividade 
-[] - Instalar as dependencias 
+[x] - Entender a atividade, isso envolve ler a atividade 
+[x] - Instalar as dependencias 
 [] - Opcional - Criar um dockerfile e um docker-compose.yml pra criar o container do banco escolhido 
-[] - Da um check se o servidor está funcionando 
-[] - Criar a service para a entidade escolhida, e fazer o CRUD 
-[] - Fazer a controller
-[] - Criar as rotas no arquivo de rotas 
+[x] - Da um check se o servidor está funcionando 
+[x] - Criar a service para a entidade escolhida, e fazer o CRUD 
+[x] - Fazer a controller
+[x] - Criar as rotas no arquivo de rotas 
 [] - Testar as rotas 
 [] - Partir para as rotas com regra de negócio
 
 Entidades:
 
-Usuário: Atributos: ID, username, peso, senha, e-mail.
+[x] Usuário: Atributos: ID, username, peso, senha, e-mail.
 
-Categoria: Atributos: ID, nome, cor (para identificação visual).
+[x] Categoria: Atributos: ID, nome, cor (para identificação visual).
 
-Tarefa: Atributos: ID, título, descrição, data de criação, data de conclusão, tipo, categoria (opcional), status (pendente, em andamento, concluída), e usuário associado.
+[x] Tarefa: Atributos: ID, título, descrição, data de criação, data de conclusão, tipo, categoria (opcional), status (pendente, em andamento, concluída), e usuário associado.
 
-Requisitos das Rotas (OPICIONAL - FAÇA POR ÚLTIMO):
+[] Requisitos das Rotas (OPICIONAL - FAÇA POR ÚLTIMO):
 
 Autenticação:
 
-Rota de registro de usuário. Rota de login de usuário.
+[] Rota de registro de usuário. Rota de login de usuário.
 
-Tarefas:
+[x] Tarefas:
 
-Rota para criação de uma nova tarefa. Rota para listar todas as tarefas de um usuário. Rota para obter detalhes de uma tarefa específica. Rota para atualizar uma tarefa existente. Rota para excluir uma tarefa.
+[x] Rota para criação de uma nova tarefa.
+[x] Rota para listar todas as tarefas de um usuário. 
+[x] Rota para obter detalhes de uma tarefa específica. 
+[x] Rota para atualizar uma tarefa existente. 
+[x] Rota para excluir uma tarefa.
 
-Categorias:
+[x] Categorias:
 
-Rota para criação de uma nova categoria. Rota para listar todas as categorias de um usuário. Rota para obter detalhes de uma categoria específica. Rota para atualizar uma categoria existente. Rota para excluir uma categoria.
+[x] Rota para criação de uma nova categoria. 
+[x] Rota para listar todas as categorias de um usuário. 
+[x] Rota para obter detalhes de uma categoria específica. 
+[x] Rota para atualizar uma categoria existente. 
+[x] Rota para excluir uma categoria.
 
-Funcionalidades Adicionais utilizando Métodos de Array:
+[] Funcionalidades Adicionais utilizando Métodos de Array:
 
-Rota para filtrar tarefas por categoria. Rota para listar tarefas concluídas / pendentes. Rota para listar tarefas que vencem em um determinado período. Rota para contar o número total de tarefas de um usuário. Rota para encontrar a tarefa mais recente de um usuário.
+[] Rota para filtrar tarefas por categoria. 
+[] Rota para listar tarefas concluídas / pendentes. 
+[] Rota para listar tarefas que vencem em um determinado período. 
+[x] Rota para contar o número total de tarefas de um usuário. 
+[] Rota para encontrar a tarefa mais recente de um usuário.
 
-Rota para calcular a média de conclusão das tarefas. Rota para encontrar a tarefa com a descrição mais longa. Rota para agrupar tarefas por categoria. Rota para encontrar a tarefa mais antiga de um usuário.
+[] Rota para calcular a média de conclusão das tarefas. 
+[] Rota para encontrar a tarefa com a descrição mais longa. 
+[] Rota para agrupar tarefas por categoria. 
+[] Rota para encontrar a tarefa mais antiga de um usuário.
 
-Observação: Estas rotas podem ser implementadas utilizando os métodos .map, .filter, .resume, .some e outros métodos de manipulação de array para alcançar as funcionalidades desejadas, agregando complexidade média a difícil ao projeto. Certifique-se de implementar as devidas verificações de segurança e validação dos dados em cada rota.
+Observação: Estas rotas podem ser implementadas utilizando os métodos: 
+[] .map, 
+[] .filter, 
+[] .resume, 
+[] .some 
+[] e outros métodos de manipulação de array 
+
+[] Certifique-se de implementar as devidas verificações de segurança e validação dos dados em cada rota.
