@@ -3,12 +3,12 @@ import { Categoria } from "./categoria";
 import { Usuario } from './usuario';
 
 export interface Tarefa {
-  id: number;
-  titulo: string;
-  descricao: string;
+  id: Number;
+  titulo: String;
+  descricao: String;
   dataCriacao: Date;
   dataConclusao: Date;
-  tipo: string;
+  tipo: String;
   categoria: Categoria;
   status: StatusEnum;
   usuarioResponsavel: Usuario;

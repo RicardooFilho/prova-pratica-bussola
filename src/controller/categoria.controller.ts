@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import {Request, Response} from 'express'
 import categoriaService from '../service/categoria.service';
 
 class CategoriaController {

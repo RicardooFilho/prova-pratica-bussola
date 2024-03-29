@@ -1,8 +1,6 @@
-import { status } from '@prisma/client';
-import { StatusEnum } from './../enum/status.enum';
-import { Usuario } from './../domain/usuario';
+import {status} from '@prisma/client';
 import prisma from "../../prisma";
-import { Tarefa } from "../domain/tarefa";
+import {Tarefa} from "../domain/tarefa";
 
 class TarefaRepository {
   async findAll() {
@@ -17,7 +15,7 @@ class TarefaRepository {
         data_criacao: tarefa.dataCriacao,
         data_conclusao: tarefa.dataConclusao,
         tipo: tarefa.tipo,
-        categoria: { connect: { id: tarefa.categoria.id }},
+        categoria: tarefa.categoria? { connect: { id: tarefa.categoria.id}}: undefined,
         status: tarefa.status as unknown as status,
         usuario: { connect: { id: tarefa.usuarioResponsavel.id}}
       }
@@ -33,7 +31,7 @@ class TarefaRepository {
         data_criacao: tarefa.dataCriacao,
         data_conclusao: tarefa.dataConclusao,
         tipo: tarefa.tipo,
-        categoria: { connect: { id: tarefa.categoria.id }},
+        categoria: tarefa.categoria? { connect: { id: tarefa.categoria.id}}: undefined,
         status: tarefa.status as unknown as status,
         usuario: { connect: { id: tarefa.usuarioResponsavel.id}}  
       }

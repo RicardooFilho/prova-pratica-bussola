@@ -1,66 +1,81 @@
-import { Tarefa } from './../domain/tarefa';
-import { Categoria } from './../domain/categoria';
-import { Request, Response } from 'express'
+import {Request, Response} from 'express'
 import tarefaService from '../service/tarefa.service';
+import {StatusCode} from "../enum/statuscode.enum";
 
 class TarefaController {
   async createOne(req: Request, res: Response) {
     try {
-      const tarefaCreated = await tarefaService.createOne(req.body);
-      return res.status(201).json(tarefaCreated);
+      const tarefa = req.body;
+      const newTarefa = await tarefaService.createOne(tarefa);
+      return res.status(StatusCode.CREATED).json(newTarefa);
     } catch (error) {
       console.error(error);
-      return res.status(400).send();
+      return res.status(StatusCode.NOT_AUTHORIZED).send();
     }
   }
 
   async findAll(req: Request, res: Response) {
-    const tarefas = await tarefaService.findAll();
-    return res.status(200).json(tarefas);
+    try {
+      const tarefas = await tarefaService.findAll();
+      return res.status(StatusCode.SUCCESS).json(tarefas);
+    } catch (error) {
+      console.error(error);
+        return res.status(StatusCode.NO_CONTENT).send();
+    }
   }
 
   async updateOne(req: Request, res: Response) {
-    const tarefaUpdated = await tarefaService.updateOne(parseInt(req.params.id), req.body);
-    return res.status(200).json(tarefaUpdated); 
+    try {
+      const tarefaId = parseInt(req.params.id);
+      const tarefaUpdated = await tarefaService.updateOne(tarefaId, req.body);
+      return res.status(StatusCode.SUCCESS).json(tarefaUpdated);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NOT_AUTHORIZED).send();
+    }
   }
 
   async deleteOne(req: Request, res: Response) {
     try {
-      await tarefaService.deleteOne(parseInt(req.params.id));
-      res.status(204).send();
+      const tarefaId = parseInt(req.params.id);
+      await tarefaService.deleteOne(tarefaId);
+      res.status(StatusCode.NO_CONTENT).send();
     } catch (error) {
       console.error(error);
-      res.status(400).send();
+      res.status(StatusCode.NOT_FOUND).send();
     }
   }
 
   async findOne(req: Request, res: Response) {
     try {
-      const tarefa = await tarefaService.findOne(parseInt(req.params.id));
-      return res.status(200).json(tarefa);
+      const tarefaId = parseInt(req.params.id);
+      const tarefa = await tarefaService.findOne(tarefaId);
+      return res.status(StatusCode.SUCCESS).json(tarefa);
     } catch (error) {
       console.error(error);
-      res.status(400).send();
+      res.status(StatusCode.NO_CONTENT).send();
     }
   }
 
   async findTarefasOfUser(req: Request, res: Response) {
     try {
-      const tarefas = await tarefaService.findAllOfUser(parseInt(req.params.id));
-      return res.status(200).json(tarefas);
+      const usuarioId = parseInt(req.params.id);
+      const tarefas = await tarefaService.findAllOfUser(usuarioId);
+      return res.status(StatusCode.SUCCESS).json(tarefas);
     } catch (error) {
       console.error(error);
-      return res.status(400).send();
+      return res.status(StatusCode.NO_CONTENT).send();
     }
   }
 
   async countOfUserTarefas(req: Request, res: Response) {
     try {
-      const count = await tarefaService.countOfUserTarefas(parseInt(req.params.id));
-      return res.status(200).json(count);
+      const usuarioId = parseInt(req.params.id);
+      const count = await tarefaService.countOfUserTarefas(usuarioId);
+      return res.status(StatusCode.SUCCESS).json(count);
     } catch (error) {
       console.error(error);
-      return res.status(400).send();
+      return res.status(StatusCode.NO_CONTENT).send();
     }
   }
 }
