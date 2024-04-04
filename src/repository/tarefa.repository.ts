@@ -7,7 +7,7 @@ class TarefaRepository {
     return prisma.tarefa.findMany();
   }
 
-  async create(tarefa: Tarefa) {
+  async create(tarefa: Tarefa){
     return prisma.tarefa.create({
       data: {
         titulo: tarefa.titulo,

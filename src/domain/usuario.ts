@@ -1,10 +1,10 @@
 import { Tarefa } from "./tarefa";
 
 export interface Usuario {
-  id: Number;
-  username: String;
-  peso: Number;
-  senha: String;
-  email: String;
+  id: number;
+  username: string;
+  peso: number;
+  senha: string;
+  email: string;
   tarefas: Tarefa[];
 }

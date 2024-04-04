@@ -1,29 +1,50 @@
 import {Request, Response} from 'express'
 import categoriaService from '../service/categoria.service';
+import {StatusCode} from "../enum/statuscode.enum";
 
 class CategoriaController {
   async createOne(req: Request, res: Response) {
-    const categoriaCreated = await categoriaService.createOne(req.body);
-    return res.status(201).json(categoriaCreated);
+    try {
+      const newCategoria = req.body;
+      const categoriaCreated = await categoriaService.createOne(newCategoria);
+      return res.status(StatusCode.CREATED).json(categoriaCreated);
+    } catch (error) {
+      console.error(error)
+      return res.status(StatusCode.NOT_AUTHORIZED)
+    }
   }
 
   async findAll(req: Request, res: Response) {
-    const categorias = await categoriaService.findAll();
-    return res.status(200).json(categorias);
+    try {
+      const categorias = await categoriaService.findAll();
+      return res.status(StatusCode.SUCCESS).json(categorias);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NO_CONTENT).send();
+    }
   }
 
   async updateOne(req: Request, res: Response) {
-    const categoriaUpdated = await categoriaService.updateOne(parseInt(req.params.id), req.body);
-    return res.status(200).json(categoriaUpdated);
+    try {
+      const categoriaId = parseInt(req.params.id);
+      const newCategoria = req.body;
+      const categoriaUpdated = await categoriaService.updateOne(categoriaId, newCategoria);
+      return res.status(StatusCode.SUCCESS).json(categoriaUpdated);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NOT_AUTHORIZED).send();
+    }
+
   }
 
   async deleteOne(req: Request, res: Response) {
     try {
-      await categoriaService.deleteOne(parseInt(req.params.id));
-      res.status(204).send();
+      const categoriaId = parseInt(req.params.id);
+      await categoriaService.deleteOne(categoriaId);
+      res.status(StatusCode.NO_CONTENT).send();
     } catch (error) {
       console.error(error);
-      res.status(400).send();
+      res.status(StatusCode.NOT_FOUND).send();
     }
   }
 } 

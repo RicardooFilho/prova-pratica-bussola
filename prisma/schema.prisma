@@ -32,6 +32,8 @@ model categoria {
   nome    String    @db.Text
   cor   String    @db.Text
   tarefas tarefa[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model tarefa {
@@ -46,6 +48,8 @@ model tarefa {
   status    status    @default(PENDENTE)
   usuario   usuario   @relation(fields: [usuario_id], references: [id])
   usuario_id    Int   @db.Integer
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 
