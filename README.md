@@ -43,20 +43,21 @@ Autenticação:
 
 [] Funcionalidades Adicionais utilizando Métodos de Array:
 
-[] Rota para filtrar tarefas por categoria. 
-[] Rota para listar tarefas concluídas / pendentes. 
-[] Rota para listar tarefas que vencem em um determinado período. 
-[x] Rota para contar o número total de tarefas de um usuário. 
-[] Rota para encontrar a tarefa mais recente de um usuário.
+[x] Rota para filtrar tarefas por categoria.
+[x] Rota para listar tarefas concluídas / pendentes.
+[x] Rota para listar tarefas que vencem em um determinado período.
+[x] Rota para contar o número total de tarefas de um usuário.
+[x] Rota para encontrar a tarefa mais recente de um usuário.
 
-[] Rota para calcular a média de conclusão das tarefas. 
-[] Rota para encontrar a tarefa com a descrição mais longa. 
-[] Rota para agrupar tarefas por categoria. 
-[] Rota para encontrar a tarefa mais antiga de um usuário.
+[x] Rota para encontrar a tarefa com a descrição mais longa.
+[x] Rota para encontrar a tarefa mais antiga de um usuário.
+[x] Rota para calcular a média de conclusão das tarefas.
+[] Rota para agrupar tarefas por categoria.
 
 Observação: Estas rotas podem ser implementadas utilizando os métodos: 
-[] .map, 
-[] .filter, 
+[x] .map, 
+[x] .filter,
+[x] .reduce,
 [] .resume, 
 [] .some 
 [] e outros métodos de manipulação de array 

@@ -3,7 +3,7 @@ import prisma from '../../prisma';
 import { Usuario } from '../domain/usuario';
 
 class UsuarioRepository{
-  async findAll(){
+  async findAll() {
     return prisma.usuario.findMany();
   }
 
@@ -34,6 +34,14 @@ class UsuarioRepository{
     await prisma.usuario.delete({
       where: {id: id}
     });
+  }
+
+  async deleteAll() {
+    await prisma.usuario.deleteMany()
+  }
+
+  async count() {
+    return prisma.usuario.count();
   }
 }
 

@@ -78,6 +78,80 @@ class TarefaController {
       return res.status(StatusCode.NO_CONTENT).send();
     }
   }
+
+  async findTarefasOfCategoria(req: Request, res: Response) {
+    try {
+      const categoriaId = parseInt(req.params.id);
+      const tarefas = await tarefaService.findTarefasOfCategoria(categoriaId);
+      return res.status(StatusCode.SUCCESS).json(tarefas);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NO_CONTENT).send();
+    }
+  }
+
+  async findTarefasByStatus(req: Request, res: Response) {
+    try {
+      const statusDescription = req.query.description as string;
+      const tarefas = await tarefaService.findTarefasByStatus(statusDescription);
+      return res.status(StatusCode.SUCCESS).json(tarefas);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NO_CONTENT).send();
+    }
+  }
+
+  async findTarefasByPeriodo(req: Request, res:Response) {
+    try {
+      const dataInicio = req.query.inicio as string;
+      const dataFinal = req.query.final as string;
+      const tarefas = await tarefaService.findTarefasByPeriodo(dataInicio, dataFinal);
+      return res.status(StatusCode.SUCCESS).json(tarefas);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NO_CONTENT).send();
+    }
+  }
+
+  async findMostRecentTarefa(req: Request, res:Response) {
+    try {
+      const tarefa = await tarefaService.findMostRecentTarefa();
+      return res.status(StatusCode.SUCCESS).json(tarefa);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NO_CONTENT).send();
+    }
+  }
+
+  async findOldestTarefa(req: Request, res:Response) {
+    try {
+      const tarefa = await tarefaService.findOldestTarefa();
+      return res.status(StatusCode.SUCCESS).json(tarefa);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NO_CONTENT).send();
+    }
+  }
+
+  async findBiggestDescriptionTarefa(req: Request, res:Response) {
+   try {
+     const tarefa = await tarefaService.findBiggestDescription();
+     return res.status(StatusCode.SUCCESS).json(tarefa);
+   }  catch (error) {
+     console.error(error);
+     return res.status(StatusCode.NO_CONTENT).send();
+   }
+  }
+
+  async findMediaConclusaoTarefas(req: Request, res:Response) {
+    try {
+      const mediaConclusao = await tarefaService.findMediaConclusaoTarefas();
+      return res.status(StatusCode.SUCCESS).json(mediaConclusao);
+    } catch (error) {
+      console.error(error);
+      return res.status(StatusCode.NO_CONTENT).send();
+    }
+  }
 }
 
 export default new TarefaController();

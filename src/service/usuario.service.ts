@@ -10,12 +10,28 @@ class UsuarioService {
      return usuarioRepository.findAll();
   }
 
+  async findOne(id: number) {
+    const usuarios = await usuarioRepository.findAll();
+
+    const usuario = usuarios.find(usuario => usuario.id === id);
+
+    return usuario;
+  }
+
   async updateOne(id: number, usuario: Usuario) {
     return usuarioRepository.update(id, usuario);
   }
 
   async deleteOne(id: number) {
     await usuarioRepository.delete(id);
+  }
+
+  async deleteAll() {
+    await usuarioRepository.deleteAll();
+  }
+
+  async count() {
+    return usuarioRepository.count();
   }
 }
 
