@@ -17,33 +17,39 @@ enum status {
 }
 
 model usuario {
-  id    Int   @id   @default(autoincrement())
-  username    String
-  peso    Int
-  senha   String
-  email   String    @unique
+  id    Int   @id   @default(autoincrement())   @db.Integer
+  username    String    @db.Text
+  peso    Int   @db.Integer
+  senha   String    @db.Text
+  email   String    @unique   @db.Text
   tarefas   tarefa[]
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
 }
 
 model categoria {
-  id    Int   @id   @default(autoincrement())
-  nome    String
-  cor   String
+  id    Int   @id   @default(autoincrement())   @db.Integer
+  nome    String    @db.Text
+  cor   String    @db.Text
   tarefas tarefa[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model tarefa {
-  id    Int   @id   @default(autoincrement())
-  titulo    String
-  descricao   String
-  data_criacao   DateTime
-  data_conclusao    DateTime
-  tipo    String
+  id    Int   @id   @default(autoincrement())   @db.Integer
+  titulo    String    @db.Text
+  descricao   String    @db.Text
+  data_criacao   DateTime   @default(now())
+  data_conclusao    DateTime    @db.Date
+  tipo    String    @db.Text
   categoria   categoria?   @relation(fields: [categoria_id], references: [id])
-  categoria_id   Int?
+  categoria_id   Int?   @db.Integer
   status    status    @default(PENDENTE)
   usuario   usuario   @relation(fields: [usuario_id], references: [id])
-  usuario_id    Int
+  usuario_id    Int   @db.Integer
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 

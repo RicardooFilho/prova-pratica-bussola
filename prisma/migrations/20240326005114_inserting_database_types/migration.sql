@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "tarefa" ALTER COLUMN "data_criacao" SET DEFAULT CURRENT_TIMESTAMP,
+ALTER COLUMN "data_conclusao" SET DATA TYPE DATE;
