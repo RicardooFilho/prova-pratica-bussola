@@ -24,6 +24,7 @@ describe('Testando endpoints de usuários', () => {
         expect(usuarioMock.senha).toBe(usuarioFinded?.senha);
         expect(usuarioMock.email).toBe(usuarioFinded?.email);
     })
+    //teste
 
     it('Deve recuperar todos os usuários do bando de dados', async () => {
         const response = await request.default(app).get('/api/usuarios')
