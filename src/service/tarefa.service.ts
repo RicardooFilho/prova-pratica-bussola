@@ -94,8 +94,8 @@ class TarefaService {
     const tarefas = await tarefaRepository.findAll();
 
     const biggestDescription = tarefas.reduce((biggestDescription, current) => {
-      return current.descricao > biggestDescription.descricao ? current : biggestDescription
-    });
+      return current.descricao.length > biggestDescription.descricao.length ? current : biggestDescription
+    }, { descricao: '' });
 
     return biggestDescription;
   }
@@ -109,13 +109,17 @@ class TarefaService {
       return total + difference;
     }, 0);
 
-    const milissegundosPorHora = 1000 * 60 * 60; //3.600.000
+    const milissegundosPorHora = 1000 * 60 * 60;
 
     const mediaConclusaoMilissegundos = conclusaoMinusCriacao / tarefas.length;
 
     const mediaConclusaoHoras = mediaConclusaoMilissegundos / milissegundosPorHora;
 
     return mediaConclusaoHoras.toFixed(2);
+  }
+
+  async count() {
+    return tarefaRepository.count();
   }
 }
 

@@ -43,6 +43,14 @@ class TarefaRepository {
       where: {id: id}
     });
   }
+
+  async deleteAll() {
+    await prisma.tarefa.deleteMany();
+  }
+
+  async count() {
+    return prisma.tarefa.count();
+  }
 }
 
 export default new TarefaRepository();

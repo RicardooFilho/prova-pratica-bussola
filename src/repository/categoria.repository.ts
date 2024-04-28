@@ -30,6 +30,14 @@ class CategoriaRepository{
       where: {id: id}
     });
   }
+
+  async deleteAll() {
+    await prisma.categoria.deleteMany();
+  }
+
+  async count() {
+    return prisma.categoria.count();
+  }
 }
 
 export default new CategoriaRepository();

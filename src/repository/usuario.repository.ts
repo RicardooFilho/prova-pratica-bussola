@@ -25,7 +25,7 @@ class UsuarioRepository{
         username: usuario.username,
         peso: usuario.peso,
         senha: usuario.senha,
-        email: usuario.email
+        email: usuario.email,
       }
     });
   }

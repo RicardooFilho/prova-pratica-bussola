@@ -17,6 +17,10 @@ class CategoriaService {
   async deleteOne(id: number) {
     await categoriaRepository.delete(id);
   }
+
+  async count() {
+    return categoriaRepository.count();
+  }
 }
 
 export default new CategoriaService();
